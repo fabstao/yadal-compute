@@ -1,0 +1,6 @@
+*key*
+venv
+config-cloud
+user-data
+meta-data
+*.pub

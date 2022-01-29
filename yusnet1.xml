@@ -1,0 +1,15 @@
+<network connections='1'>
+  <name>yusnet1</name>
+  <forward mode='nat'>
+    <nat>
+      <port start='1024' end='65535'/>
+    </nat>
+  </forward>
+  <bridge name='br2' stp='on' delay='0'/>
+  <ip address='172.16.132.1' netmask='255.255.255.0'>
+    <dhcp>
+      <range start='172.16.132.10' end='172.16.132.100'/>
+    </dhcp>
+  </ip>
+</network>
+

@@ -1,0 +1,20 @@
+#cloud-config
+users:
+  - default
+  - name: yunefo
+    gecos: Yunefo Cloud User
+    sudo: ['ALL=(ALL) NOPASSWD:ALL']
+    ssh_authorized_keys:
+      - "{{ thesshkey }}"
+  - name: fsalaman
+    gecos: Fabs Saruman
+    sudo: ['ALL=(ALL) NOPASSWD:ALL']
+    ssh_authorized_keys:
+      - "{{ thesshkey }}"
+  - name: nosshlogins
+    ssh_redirect_user: true
+bootcmd:
+  - echo "YUNEFO Cloud Image" | tee /etc/issue
+  - echo "YUNEFO Cloud Image" | tee /etc/issue.net
+  - echo "Finished"
+
