@@ -1,11 +1,16 @@
 #!/usr/bin/env python3
+# ********************************************
+# (C) 2022 Fabian Salamanca <fabs@yunefo.tech>
+# ********************************************
 
 import argparse
 from jinja2 import Environment, FileSystemLoader
 
-
-class readKey:
-
+class ReadKey:
+    """
+    ReadKey class: Simple SSH public key reader. Attributes
+    defined in the constructor.
+    """
     def __init__(self, keyfilename: str):
         self.keyfilename = keyfilename
 
@@ -16,8 +21,12 @@ class readKey:
         return cleank
 
 
-class renderTmpl:
-
+class RenderTmpl:
+    """
+    RenderTmpl class: This class assigns required values from the constructor.
+    Just local-hostname and ssh-keys are being rendered but more cloud-init
+    data could be managed as well, it will need to be included here
+    """
     temps = {"user-data": "user-data.tmp", "meta-data": "meta-data.tmp"}
     
     file_loader = FileSystemLoader('templates')
@@ -37,15 +46,15 @@ class renderTmpl:
         
 
 if __name__ == "__main__":
+
+    # Using argparser for args management
     parser = argparse.ArgumentParser(description='Render cloud configuration options.')
     parser.add_argument('--ssh-key', type=str,help='SSH Public key filename', required=True)
     parser.add_argument('--hostname', type=str,help='VM Hostname', required=True)
-
     args = parser.parse_args()
-    keyobj = readKey(args.ssh_key)
+    keyobj = ReadKey(args.ssh_key)
     sshkey = keyobj.loadKey()        
     print(sshkey)
-    rend = renderTmpl(sshkey, args.hostname)
+    rend = RenderTmpl(sshkey, args.hostname)
     rend.render()
     print(f"\nFINISHED\n\n")
-            
