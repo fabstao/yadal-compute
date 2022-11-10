@@ -1,0 +1,5 @@
+<network>
+  <name>yadabr1</name>
+  <forward mode="bridge"/>
+  <bridge name="yadabr1"/>
+</network>

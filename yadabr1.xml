@@ -1,0 +1,7 @@
+<network connections='28'>
+  <name>yadabr1</name>
+  <uuid>a87139be-20b4-4030-9f84-008bdf2d98df</uuid>
+  <forward mode='bridge'/>
+  <bridge name='yadabr1'/>
+</network>
+
