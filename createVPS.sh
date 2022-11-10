@@ -5,7 +5,7 @@ if [ $# -lt 5 ]; then
 	exit 1
 fi
 
-BASEDIR=/home/fsalaman/src/cloud/yadal
+BASEDIR=/opt/yadal
 POOL=/opt/cloudstg
 BASE=basec9.qcow2
 VMNAME=$1
