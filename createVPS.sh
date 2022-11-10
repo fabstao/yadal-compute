@@ -6,7 +6,7 @@ if [ $# -lt 5 ]; then
 fi
 
 BASEDIR=/home/fsalaman/src/cloud/yadal
-POOL=/opt/cloudstg
+POOL=/home/fsalaman/cloudstg
 BASE=basec9.qcow2
 VMNAME=$1
 VIRSH="virsh -c qemu:///system "
