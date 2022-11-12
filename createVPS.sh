@@ -34,7 +34,7 @@ virt-filesystems --partitions --long -h --all -a ${POOL}/${VMNAME}.qcow2
 
 ls -lrth ${POOL}
 
-virt-install --connect qemu:///system --name $1 --memory $3 --vcpus $4 --network network=$2,model=virtio --cloud-init user-data=${BASEDIR}/user-data,meta-data=${BASEDIR}/meta-data --import --disk ${POOL}/${VMNAME}.qcow2 --graphics vnc --os-variant linux2020  --noautoconsole
+virt-install --connect qemu:///system --name $1 --memory $3 --vcpus $4 --network network=$2,model=virtio --cloud-init user-data=${BASEDIR}/user-data,meta-data=${BASEDIR}/meta-data,root-password-file=./.cowboy,ssh-key=./ckey --import --disk ${POOL}/${VMNAME}.qcow2 --graphics vnc --os-variant linux2020  --noautoconsole
 
 sleep 8
 DOMN=$(${VIRSH} list | grep $VMNAME | grep -v grep |  awk '{print $1}')
